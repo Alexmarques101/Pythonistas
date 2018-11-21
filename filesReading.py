@@ -4,16 +4,16 @@
 # 53828 Vasco Oliveira
 
 fileName = '2019y01m12clients09h00.txt'
-def readExpertsFile(fileName):
+def readFile(fileName):
     """
-    Converts a given file listing experts into a collection
-    Requires: fileName is str, the name of a .txt file listing experts,
+    Converts a given file listing experts, clients or scheduling into a collection
+    Requires: fileName is str, the name of a .txt file listing experts, clients or scheduling
     following the format specified in the project.
-    Ensures: list whose first element is ... <to complete>
+    Ensures: list whose first element is a tuple and the second is a list of lists
     """
     outputList = []
     
-    #outputList.append(readHeader(fileName))
+    outputList.append(readHeader(fileName))
     
     fileIn = open(fileName, 'r')
 
@@ -26,12 +26,12 @@ def readExpertsFile(fileName):
     fileIn.readline()
     fileIn.readline()
     fileIn.readline()
-    experts = fileIn.readlines()
-    experts = [x.strip().replace("\n", "") for x in experts]
-    experts = [x.split(",") for x in experts]
+    file = fileIn.readlines()
+    file = [x.strip().replace("\n", "").replace(" ", "") for x in file]
+    file = [x.split(",") for x in file]
     #experts = [line for line in experts]
-    #outputList.append(experts)
-    return experts
+    outputList.append(file)
+    return outputList
 
 
 
