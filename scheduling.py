@@ -52,7 +52,7 @@ def scheduling (file1, file2):
             
     return final       
 
-    
+    #Fiz uns testes mas parece que as datas não estão a sair bem...
     
        
            
