@@ -3,9 +3,9 @@
 # 39071 Alexandre Santos
 # 53828 Vasco Oliveira
 
-
-file1= '2019y01m12clients09h00.txt'
-file2 = '2019y01m12experts09h30.txt'
+from copy import deepcopy
+file1= '2019y02m15clients10h30.txt'
+file2 = '2019y02m15experts10h30.txt'
 from filesReading import readFile
 from dateTime import strToDate
 
@@ -34,15 +34,26 @@ def scheduling (file1, file2):
                             
                     
                     final.append([result[0][0].strftime("%Y-%m-%d"), result[0][1].strftime("%H:%M"), result[1], result[2]])
-    #return final
-    client=0
-    item=0       
-    for client in range(len(clients[1])):
-          for item in range(len(final)):
-              #if client[0] not in final[item]
-              
-    #Now we can see if there are clients that did not get any match with experts and if true return them with "declined"          
-    #any(client in clients[1][client][0]  for item in final[item])
+                    
+    #Auxiliar list to facilitate
+    auxiliar = []
+    i=0
+    for i in range(len(final)):
+        auxiliar.append(final[i][2])
+    
+   #Including clients with no match.
+   #Created a deep copy of clients and then for each one that is not in Auxiliar list, remove it and
+   #include it in final
+    schedule = deepcopy(clients)
+    j=0
+    for j in range(len(clients[1])):
+        if clients[1][j][0] not in auxiliar:
+            final.append([schedule[1][j].pop(2), schedule[1][j].pop(2), schedule[1][j].pop(0), "declined"])
+            
+    return final       
+
+    
+    
        
            
            
