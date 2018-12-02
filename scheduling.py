@@ -56,7 +56,7 @@ def scheduling (file1, file2):
     declinedList = []
     serviceList= []
 
-    for line in schedule:
+    for line in final:
         if 'declined' in line:
             declinedList.append(line)
         else:
