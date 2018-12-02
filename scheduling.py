@@ -49,10 +49,24 @@ def scheduling (file1, file2):
     for j in range(len(clients[1])):
         if clients[1][j][0] not in auxiliar:
             final.append([schedule[1][j].pop(2), schedule[1][j].pop(2), schedule[1][j].pop(0), "declined"])
-            
-    return final       
+               
 
-    #Fiz uns testes mas parece que as datas não estão a sair bem...
+    #Sort the final list by date and hour, with 'declined' clients first.
+    declinedList = []
+    serviceList= []
+
+    for line in schedule:
+        if 'declined' in line:
+            declinedList.append(line)
+        else:
+            serviceList.append(line)
+    
+    sorted(declinedList)
+    sorted(serviceList)
+    
+    finalList = declinedList + serviceList
+    
+    return finalList
     
        
            
