@@ -62,10 +62,7 @@ def scheduling (file1, file2):
         else:
             serviceList.append(line)
     
-    sorted(declinedList)
-    sorted(serviceList)
-    
-    finalList = declinedList + serviceList
+    finalList = sorted(declinedList) + sorted(serviceList)
     
     return finalList
     
