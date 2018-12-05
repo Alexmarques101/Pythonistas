@@ -19,3 +19,14 @@ def add_one_hour(hours):
     t2 = dt.datetime.strptime('01:00', '%H:%M')
     time_available = dt.datetime.strptime('00:00', '%H:%M')
     return (t1 - time_available + t2).time().strftime('%H:%M')
+
+#Function to add half hour to the header time   
+def add_half_hour(hours):
+
+    t1 = dt.datetime.strptime(hours, '%H:%M')
+    t2 = dt.datetime.strptime('00:30', '%H:%M')
+    time_available = dt.datetime.strptime('00:00', '%H:%M')
+    return (t1 - time_available + t2).time().strftime('%H:%M')
+
+
+
